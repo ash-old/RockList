@@ -10,10 +10,13 @@
 		5EAA1B702899C2B10083F06F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B6F2899C2B10083F06F /* AppDelegate.swift */; };
 		5EAA1B722899C2B10083F06F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B712899C2B10083F06F /* SceneDelegate.swift */; };
 		5EAA1B742899C2B10083F06F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B732899C2B10083F06F /* ViewController.swift */; };
-		5EAA1B772899C2B10083F06F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EAA1B752899C2B10083F06F /* Main.storyboard */; };
 		5EAA1B7A2899C2B10083F06F /* RockList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B782899C2B10083F06F /* RockList.xcdatamodeld */; };
 		5EAA1B7C2899C2B40083F06F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EAA1B7B2899C2B40083F06F /* Assets.xcassets */; };
 		5EAA1B7F2899C2B40083F06F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EAA1B7D2899C2B40083F06F /* LaunchScreen.storyboard */; };
+		5EAA1B872899CB1E0083F06F /* RockListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B862899CB1E0083F06F /* RockListViewCell.swift */; };
+		5EAA1B892899CF1F0083F06F /* RockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B882899CF1F0083F06F /* RockListViewModel.swift */; };
+		5EAA1B8B289AD2CF0083F06F /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B8A289AD2CF0083F06F /* TrackModel.swift */; };
+		5EAA1B8D289AD3D50083F06F /* TrackDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B8C289AD3D50083F06F /* TrackDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +24,14 @@
 		5EAA1B6F2899C2B10083F06F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EAA1B712899C2B10083F06F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5EAA1B732899C2B10083F06F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5EAA1B762899C2B10083F06F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5EAA1B792899C2B10083F06F /* RockList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RockList.xcdatamodel; sourceTree = "<group>"; };
 		5EAA1B7B2899C2B40083F06F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EAA1B7E2899C2B40083F06F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5EAA1B802899C2B40083F06F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EAA1B862899CB1E0083F06F /* RockListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockListViewCell.swift; sourceTree = "<group>"; };
+		5EAA1B882899CF1F0083F06F /* RockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockListViewModel.swift; sourceTree = "<group>"; };
+		5EAA1B8A289AD2CF0083F06F /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
+		5EAA1B8C289AD3D50083F06F /* TrackDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +67,10 @@
 				5EAA1B6F2899C2B10083F06F /* AppDelegate.swift */,
 				5EAA1B712899C2B10083F06F /* SceneDelegate.swift */,
 				5EAA1B732899C2B10083F06F /* ViewController.swift */,
-				5EAA1B752899C2B10083F06F /* Main.storyboard */,
+				5EAA1B862899CB1E0083F06F /* RockListViewCell.swift */,
+				5EAA1B8A289AD2CF0083F06F /* TrackModel.swift */,
+				5EAA1B882899CF1F0083F06F /* RockListViewModel.swift */,
+				5EAA1B8C289AD3D50083F06F /* TrackDTO.swift */,
 				5EAA1B7B2899C2B40083F06F /* Assets.xcassets */,
 				5EAA1B7D2899C2B40083F06F /* LaunchScreen.storyboard */,
 				5EAA1B802899C2B40083F06F /* Info.plist */,
@@ -130,7 +139,6 @@
 			files = (
 				5EAA1B7F2899C2B40083F06F /* LaunchScreen.storyboard in Resources */,
 				5EAA1B7C2899C2B40083F06F /* Assets.xcassets in Resources */,
-				5EAA1B772899C2B10083F06F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,22 +151,18 @@
 			files = (
 				5EAA1B7A2899C2B10083F06F /* RockList.xcdatamodeld in Sources */,
 				5EAA1B742899C2B10083F06F /* ViewController.swift in Sources */,
+				5EAA1B8B289AD2CF0083F06F /* TrackModel.swift in Sources */,
 				5EAA1B702899C2B10083F06F /* AppDelegate.swift in Sources */,
 				5EAA1B722899C2B10083F06F /* SceneDelegate.swift in Sources */,
+				5EAA1B8D289AD3D50083F06F /* TrackDTO.swift in Sources */,
+				5EAA1B872899CB1E0083F06F /* RockListViewCell.swift in Sources */,
+				5EAA1B892899CF1F0083F06F /* RockListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5EAA1B752899C2B10083F06F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5EAA1B762899C2B10083F06F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5EAA1B7D2899C2B40083F06F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -296,9 +300,10 @@
 				INFOPLIST_FILE = RockList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -324,9 +329,10 @@
 				INFOPLIST_FILE = RockList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
