@@ -61,15 +61,10 @@ final class RockListViewCell: UITableViewCell {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
-  override func layoutSubviews() {
-      super.layoutSubviews()
 
-//      contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
-  }
   
   private func cellSetupLayout() {
-    backgroundColor = .clear
+    backgroundColor = .white
     selectionStyle = .none
     
     [icon, stackView].forEach {
