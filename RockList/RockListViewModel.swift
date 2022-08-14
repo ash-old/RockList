@@ -47,8 +47,6 @@ class RockListViewModel {
         }
         if let safeData = data {
           let rockList = self.parseJSON(safeData)
-          print("README", rockList)
-          //            self.view?.update()
         }
       }
       task.resume()
@@ -66,7 +64,7 @@ class RockListViewModel {
       
 //      model = [TrackModel(trackName: track, artist: artist, price: price, image: image)]
       track = decodedData.results
-      print("AAAA", track)
+//      print("AAAA", track)
       decodedData.results.forEach({ song in
         print("SONG", song)
       })

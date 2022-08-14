@@ -18,14 +18,16 @@ class ViewController: UIViewController, RockListView {
     setupViews()
   }
   
-  private lazy var customNavBar: UINavigationBar = {
-    let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40))
-//    let title = UINavigationItem(title: "Rock List")
-//    navBar.topItem?.title = "Rock List"
-//    navBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black, NSAttributedString.Key.font:UIFont(name:"HelveticaNeue", size: 26)!]
-//    navBar.setItems([title], animated: false)
-    navBar.topItem?.title = "YourTitle"
+  private lazy var customNavBar: UIView = {
+    let navBar = UIView()
     return navBar
+  }()
+  
+  private let titleLabel: UILabel = {
+    let label = UILabel()
+    label.text = "Rock Tracks"
+    label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+    return label
   }()
   
   private lazy var tableView: UITableView = {
@@ -49,19 +51,22 @@ class ViewController: UIViewController, RockListView {
       customNavBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       customNavBar.heightAnchor.constraint(equalToConstant: 40 + view.safeAreaInsets.top)
     ])
-//    customNavBar.topItem?.title = "YourTitle"
+    self.navigationItem.title = "Rock"
   }
   
   private func setupViews() {
-    [tableView, customNavBar].forEach {
+    [tableView, customNavBar, titleLabel].forEach {
       view.addSubview($0)
       $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
     NSLayoutConstraint.activate([
+      titleLabel.topAnchor.constraint(equalTo: customNavBar.centerYAnchor, constant: 42),
+      titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      
       tableView.topAnchor.constraint(equalTo: customNavBar.bottomAnchor, constant: 16),
-      tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-      tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+      tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+      tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
       tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8)
     ])
   }
@@ -77,11 +82,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 1
   }
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 120
+  }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "RockListCell", for: indexPath) as? RockListViewCell, let vm = viewModel, let titlePrice = vm.track else { return UITableViewCell() }
     
-    cell.icon.image = UIImage(named: titlePrice[indexPath.section].artworkUrl30)
+    if let url = URL(string: "\(titlePrice[indexPath.section].artworkUrl100)") {
+      let data = try? Data(contentsOf: url)
+
+      if let imageData = data {
+        cell.icon.image = UIImage(data: imageData)
+      }
+    }
+    
     cell.trackNameLabel.text = vm.track?[indexPath.section].trackName
     cell.artistLabel.text = vm.track?[indexPath.section].artistName
     cell.priceLabel.text = String(describing: titlePrice[indexPath.section].trackPrice)
@@ -102,6 +117,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     view.backgroundColor = .clear
     return view
   }
+  
+  
   
   
 }

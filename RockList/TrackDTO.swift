@@ -14,6 +14,6 @@ struct TrackDTO: Codable {
 struct TrackData: Codable {
   let trackName: String
   let artistName: String
-  let artworkUrl30: String
+  let artworkUrl100: String
   let trackPrice: Double
 }

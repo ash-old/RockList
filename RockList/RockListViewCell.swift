@@ -21,7 +21,8 @@ final class RockListViewCell: UITableViewCell {
     label.textAlignment = .left
     label.textColor = .black
     label.adjustsFontForContentSizeCategory = true
-    label.font = UIFont.boldSystemFont(ofSize: 17)
+    label.font = UIFont.boldSystemFont(ofSize: 15)
+    label.numberOfLines = 0
     label.text = "track"
     return label
   }()
@@ -31,7 +32,7 @@ final class RockListViewCell: UITableViewCell {
     label.textAlignment = .left
     label.textColor = .black
     label.adjustsFontForContentSizeCategory = true
-    label.font = UIFont.boldSystemFont(ofSize: 17)
+    label.font = UIFont.boldSystemFont(ofSize: 15)
     label.text = "artist"
     return label
   }()
@@ -41,7 +42,7 @@ final class RockListViewCell: UITableViewCell {
     label.textAlignment = .left
     label.textColor = .black
     label.adjustsFontForContentSizeCategory = true
-    label.font = UIFont.boldSystemFont(ofSize: 17)
+    label.font = UIFont.boldSystemFont(ofSize: 15)
     label.text = "£7.99"
     return label
   }()
@@ -49,7 +50,7 @@ final class RockListViewCell: UITableViewCell {
   private lazy var stackView: UIStackView = {
     let stackView = UIStackView(arrangedSubviews: [trackNameLabel, artistLabel, priceLabel])
     stackView.axis = .vertical
-    stackView.distribution = .fill
+    stackView.distribution = .fillProportionally
     return stackView
   }()
   
@@ -67,7 +68,7 @@ final class RockListViewCell: UITableViewCell {
     backgroundColor = .white
     selectionStyle = .none
     
-    [icon, stackView].forEach {
+    [stackView, icon].forEach {
       contentView.addSubview($0)
       $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -78,7 +79,7 @@ final class RockListViewCell: UITableViewCell {
       icon.heightAnchor.constraint(equalTo: contentView.heightAnchor),
       icon.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5),
       
-      stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+      stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
       stackView.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 16),
       stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
       stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
