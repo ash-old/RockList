@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, RockListView {
+class MainViewController: UIViewController, RockListView {
   
   var viewModel: RockListViewModel?
 
@@ -78,7 +78,7 @@ class ViewController: UIViewController, RockListView {
 }
 
 // MARK: TableView Delegate
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 1
   }
@@ -118,7 +118,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     return view
   }
   
-  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    return (print("Track Name", viewModel?.track?[indexPath.section].trackName))
+  }
   
   
 }
