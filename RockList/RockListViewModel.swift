@@ -77,11 +77,8 @@ class RockListViewModel {
   }
   
   func millitoMinutes(data: Int) -> String {
-    guard let currentTrack = track else { return "" }
-//    let milliseconds = currentTrack[currentSection].trackTimeMillis ?? 0
+    //    let milliseconds = currentTrack[currentSection].trackTimeMillis ?? 0
     let milliseconds = data
-    print("BBBB", currentTrack[currentSection].trackName)
-
     let date = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1_000))
 
         let formatter = DateFormatter()
