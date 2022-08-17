@@ -51,7 +51,6 @@ class MainViewController: UIViewController, RockListView {
       customNavBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       customNavBar.heightAnchor.constraint(equalToConstant: 40 + view.safeAreaInsets.top)
     ])
-    self.navigationItem.title = "Rock"
   }
   
   private func setupViews() {
@@ -89,6 +88,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "RockListCell", for: indexPath) as? RockListViewCell, let vm = viewModel, let titlePrice = vm.track else { return UITableViewCell() }
     
+    vm.currentSection = indexPath.section
+    
     if let url = URL(string: "\(titlePrice[indexPath.section].artworkUrl100)") {
       let data = try? Data(contentsOf: url)
 
@@ -99,7 +100,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     cell.trackNameLabel.text = vm.track?[indexPath.section].trackName
     cell.artistLabel.text = vm.track?[indexPath.section].artistName
-    cell.priceLabel.text = String(describing: titlePrice[indexPath.section].trackPrice)
+    cell.priceLabel.text = String(describing: "£ \(titlePrice[indexPath.section].trackPrice)")
     
     return cell
   }
@@ -119,7 +120,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    return (print("Track Name", viewModel?.track?[indexPath.section].trackName))
+    let rockTrackViewController = RockTrackViewController()
+    rockTrackViewController.selectedIndex = indexPath.section
+    present(rockTrackViewController, animated: true)
   }
   
   

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol RockListView: AnyObject {
+protocol RockListView: UIViewController {
   func update()
 }
 
@@ -16,11 +16,12 @@ class RockListViewModel {
   
   let url = "https://itunes.apple.com/search?term=rock"
   var view: RockListView?
-  var currentIndex: Int = 0
+  var currentSection: Int
   var track: [TrackData]?
   
-  init(view: RockListView) {
+  init(view: RockListView, currentSection: Int = 0) {
     self.view = view
+    self.currentSection = currentSection
     
     getTrackData()
   }
@@ -46,7 +47,7 @@ class RockListViewModel {
           return
         }
         if let safeData = data {
-          let rockList = self.parseJSON(safeData)
+          self.parseJSON(safeData)
         }
       }
       task.resume()
@@ -56,7 +57,7 @@ class RockListViewModel {
   func parseJSON(_ data: Data) {
     let decoder = JSONDecoder()
     do {
-      let decodedData = try decoder.decode(TrackDTO.self, from: data)
+      let decodedData = try decoder.decode(TrackModel.self, from: data)
 //      let track = decodedData.results[currentIndex].trackName
 //      let artist = decodedData.results[currentIndex].artistName
 //      let price = decodedData.results[currentIndex].trackPrice
@@ -64,9 +65,8 @@ class RockListViewModel {
       
 //      model = [TrackModel(trackName: track, artist: artist, price: price, image: image)]
       track = decodedData.results
-//      print("AAAA", track)
       decodedData.results.forEach({ song in
-        print("SONG", song)
+//        print("SONG", song)
       })
 //      return model
       
@@ -74,6 +74,22 @@ class RockListViewModel {
       print(error)
 //      return nil
     }
+  }
+  
+  func millitoMinutes(data: Int) -> String {
+    guard let currentTrack = track else { return "" }
+//    let milliseconds = currentTrack[currentSection].trackTimeMillis ?? 0
+    let milliseconds = data
+    print("BBBB", currentTrack[currentSection].trackName)
+
+    let date = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1_000))
+
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        formatter.dateFormat = "mm:ss"
+
+        print(formatter.string(from: date))
+    return formatter.string(from: date)
   }
 
 }

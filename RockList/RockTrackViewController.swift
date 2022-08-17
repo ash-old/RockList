@@ -10,6 +10,7 @@ import UIKit
 class RockTrackViewController: UIViewController, RockListView {
   
   var viewModel: RockListViewModel?
+  var selectedIndex: Int = 0
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -18,10 +19,19 @@ class RockTrackViewController: UIViewController, RockListView {
     setupViews()
   }
   
+  private lazy var chevronImage: UIButton = {
+    let button = UIButton()
+    button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+    button.contentMode = .scaleAspectFit
+    button.tintColor = .black
+    button.addTarget(self, action: #selector(chevronTapped), for: .touchUpInside)
+    return button
+  }()
+  
   let trackImage: UIImageView = {
     let icon = UIImageView()
     icon.contentMode = .scaleAspectFit
-    icon.backgroundColor = .white
+    icon.backgroundColor = .lightGray
     return icon
   }()
   
@@ -52,7 +62,7 @@ class RockTrackViewController: UIViewController, RockListView {
     label.textColor = .black
     label.adjustsFontForContentSizeCategory = true
     label.font = UIFont.boldSystemFont(ofSize: 15)
-    label.text = "£7.99"
+    label.text = "price"
     return label
   }()
   
@@ -69,6 +79,7 @@ class RockTrackViewController: UIViewController, RockListView {
     label.textColor = .black
     label.adjustsFontForContentSizeCategory = true
     label.font = UIFont.boldSystemFont(ofSize: 15)
+    label.text = "duration"
     return label
   }()
   
@@ -78,6 +89,7 @@ class RockTrackViewController: UIViewController, RockListView {
     label.textColor = .black
     label.adjustsFontForContentSizeCategory = true
     label.font = UIFont.boldSystemFont(ofSize: 15)
+    label.text = "release date"
     return label
   }()
   
@@ -108,14 +120,22 @@ class RockTrackViewController: UIViewController, RockListView {
     //
   }
   
+  @objc private func chevronTapped(_ sender: Any) {
+    self.dismiss(animated: true, completion: nil)
+  }
+  
   private func setupViews() {
-    [trackImage, stackView, trackDurationLabel, releaseDateLabel, button].forEach {
+    [trackImage, chevronImage, stackView, trackDurationLabel, releaseDateLabel, button].forEach {
       view.addSubview($0)
       $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
     NSLayoutConstraint.activate([
-      trackImage.topAnchor.constraint(equalTo: view.topAnchor),
+      chevronImage.topAnchor.constraint(equalTo: trackImage.topAnchor, constant: 16),
+      chevronImage.leadingAnchor.constraint(equalTo: trackImage.leadingAnchor, constant: 16),
+      chevronImage.heightAnchor.constraint(equalToConstant: 25),
+      
+      trackImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 8),
       trackImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       trackImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       trackImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
@@ -123,6 +143,33 @@ class RockTrackViewController: UIViewController, RockListView {
       stackView.topAnchor.constraint(equalTo: trackImage.bottomAnchor, constant: 8),
       stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
       stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+      
+      trackDurationLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 24),
+      trackDurationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+      
+      releaseDateLabel.topAnchor.constraint(equalTo: trackDurationLabel.bottomAnchor, constant: 4),
+      releaseDateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+      
+      button.topAnchor.constraint(equalTo: releaseDateLabel.bottomAnchor, constant: 40),
+      button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+      button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+      button.heightAnchor.constraint(equalToConstant: 45)
+      
       ])
+    
+    if let vm = viewModel?.track {
+      if let url = URL(string: "\(vm[selectedIndex].artworkUrl100)") {
+        let data = try? Data(contentsOf: url)
+
+        if let imageData = data {
+          trackImage.image = UIImage(data: imageData)
+        }
+      }
+      trackNameLabel.text = vm[selectedIndex].trackName
+      artistLabel.text = vm[selectedIndex].artistName
+      priceLabel.text = String(describing: "£ \(vm[selectedIndex].trackPrice)")     
+      trackDurationLabel.text = viewModel?.millitoMinutes(data: vm[selectedIndex].trackTimeMillis ?? 0)
+//      releaseDateLabel.text = vm[currentIndex].releaseDate
+    }
   }
 }
