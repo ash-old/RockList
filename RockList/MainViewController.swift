@@ -87,9 +87,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "RockListCell", for: indexPath) as? RockListViewCell, let vm = viewModel, let titlePrice = vm.track else { return UITableViewCell() }
-    
-    vm.currentSection = indexPath.section
-    
+
     if let url = URL(string: "\(titlePrice[indexPath.section].artworkUrl100)") {
       let data = try? Data(contentsOf: url)
 

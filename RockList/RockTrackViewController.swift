@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import SafariServices
+import WebKit
 
-class RockTrackViewController: UIViewController, RockListView {
+class RockTrackViewController: UIViewController, RockListView, WKNavigationDelegate {
   
   var viewModel: RockListViewModel?
   var selectedIndex: Int = 0
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
     view.backgroundColor = .lightGray
     viewModel = RockListViewModel(view: self)
     setupViews()
@@ -112,6 +114,24 @@ class RockTrackViewController: UIViewController, RockListView {
     return button
   }()
   
+  private let moreDetailsView: UIView = {
+    let view = UIView()
+    view.layer.cornerRadius = 30
+    view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMinYCorner]
+    view.layer.masksToBounds = true
+    view.backgroundColor = .white
+    return view
+  }()
+  
+  private lazy var webKitView: WKWebView = {
+    let webView = WKWebView(frame: self.view.bounds, configuration: WKWebViewConfiguration())
+    webView.navigationDelegate = self
+    webView.contentMode = .scaleAspectFit
+    webView.layer.cornerRadius = 30
+    webView.layer.masksToBounds = true
+    return webView
+  }()
+  
   @objc private func onButtonTap() {
     print("VIEW DETAILS")
   }
@@ -169,7 +189,7 @@ class RockTrackViewController: UIViewController, RockListView {
       artistLabel.text = vm[selectedIndex].artistName
       priceLabel.text = String(describing: "£ \(vm[selectedIndex].trackPrice)")     
       trackDurationLabel.text = viewModel?.millitoMinutes(data: vm[selectedIndex].trackTimeMillis ?? 0)
-//      releaseDateLabel.text = vm[currentIndex].releaseDate
+      releaseDateLabel.text = viewModel?.dateFormatter(convertDate: vm[selectedIndex].releaseDate ?? "")
     }
   }
 }

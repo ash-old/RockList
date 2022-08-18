@@ -16,12 +16,10 @@ class RockListViewModel {
   
   let url = "https://itunes.apple.com/search?term=rock"
   var view: RockListView?
-  var currentSection: Int
   var track: [TrackData]?
   
-  init(view: RockListView, currentSection: Int = 0) {
+  init(view: RockListView) {
     self.view = view
-    self.currentSection = currentSection
     
     getTrackData()
   }
@@ -29,17 +27,14 @@ class RockListViewModel {
   func getTrackData() {
     let group = DispatchGroup()
     let urlString = "\(url)"
-    //1. create a URL
     let urls = [ URL(string: urlString) ]
-    //2. create a URLSession
-    let session = URLSession(configuration: .default)
-    //3. give the session a task
+    let session = URLSession.shared
     for url in urls {
       group.enter()
       
       let task = session.dataTask(with: url!) { (data, response, error) in
-        if error != nil {
-          print("Error", error!)
+        if let error = error {
+          print("Error fetching data", error)
           group.leave()
           group.notify(queue: DispatchQueue.main, execute: {
             print("All Done");
@@ -58,21 +53,13 @@ class RockListViewModel {
     let decoder = JSONDecoder()
     do {
       let decodedData = try decoder.decode(TrackModel.self, from: data)
-//      let track = decodedData.results[currentIndex].trackName
-//      let artist = decodedData.results[currentIndex].artistName
-//      let price = decodedData.results[currentIndex].trackPrice
-//      let image = decodedData.results[currentIndex].artworkUrl30
-      
-//      model = [TrackModel(trackName: track, artist: artist, price: price, image: image)]
       track = decodedData.results
-      decodedData.results.forEach({ song in
+//      decodedData.results.forEach({ song in
 //        print("SONG", song)
-      })
-//      return model
-      
+//      })
+
     } catch {
       print(error)
-//      return nil
     }
   }
   
@@ -85,8 +72,19 @@ class RockListViewModel {
         formatter.timeZone = TimeZone(identifier: "UTC")
         formatter.dateFormat = "mm:ss"
 
-        print(formatter.string(from: date))
+//        print(formatter.string(from: date))
     return formatter.string(from: date)
+  }
+  
+  func dateFormatter(convertDate: String) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+    let dateFromString: Date = dateFormatter.date(from: convertDate)!
+    dateFormatter.dateFormat = "MMMM yyyy"
+    let datenew = dateFormatter.string(from: dateFromString)
+//      print("date: \(datenew)")
+    return String(describing: datenew)
   }
 
 }
