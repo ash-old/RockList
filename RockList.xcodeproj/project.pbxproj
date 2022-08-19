@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5EA6EF4028AF95B000001DC1 /* RockListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA6EF3F28AF95B000001DC1 /* RockListTests.swift */; };
+		5EA6EF4728AF9FBF00001DC1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5EA6EF4628AF9FBF00001DC1 /* README.md */; };
+		5EA6EF4C28AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.39.56.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA6EF4928AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.39.56.png */; };
+		5EA6EF4D28AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.40.17.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA6EF4A28AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.40.17.png */; };
+		5EA6EF4E28AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.40.09.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA6EF4B28AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.40.09.png */; };
 		5EAA1B702899C2B10083F06F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B6F2899C2B10083F06F /* AppDelegate.swift */; };
 		5EAA1B722899C2B10083F06F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B712899C2B10083F06F /* SceneDelegate.swift */; };
 		5EAA1B742899C2B10083F06F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B732899C2B10083F06F /* MainViewController.swift */; };
@@ -33,6 +37,10 @@
 /* Begin PBXFileReference section */
 		5EA6EF3D28AF95AF00001DC1 /* RockListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RockListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EA6EF3F28AF95B000001DC1 /* RockListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockListTests.swift; sourceTree = "<group>"; };
+		5EA6EF4628AF9FBF00001DC1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5EA6EF4928AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.39.56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.39.56.png"; sourceTree = "<group>"; };
+		5EA6EF4A28AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.40.17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.40.17.png"; sourceTree = "<group>"; };
+		5EA6EF4B28AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.40.09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.40.09.png"; sourceTree = "<group>"; };
 		5EAA1B6C2899C2B10083F06F /* RockList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EAA1B6F2899C2B10083F06F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EAA1B712899C2B10083F06F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,10 +81,21 @@
 			path = RockListTests;
 			sourceTree = "<group>";
 		};
+		5EA6EF4828AFA02600001DC1 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				5EA6EF4928AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.39.56.png */,
+				5EA6EF4B28AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.40.09.png */,
+				5EA6EF4A28AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.40.17.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 		5EAA1B632899C2B10083F06F = {
 			isa = PBXGroup;
 			children = (
 				5EAA1B6E2899C2B10083F06F /* RockList */,
+				5EA6EF4628AF9FBF00001DC1 /* README.md */,
 				5EA6EF3E28AF95B000001DC1 /* RockListTests */,
 				5EAA1B6D2899C2B10083F06F /* Products */,
 			);
@@ -105,6 +124,7 @@
 				5EAA1B7D2899C2B40083F06F /* LaunchScreen.storyboard */,
 				5EAA1B802899C2B40083F06F /* Info.plist */,
 				5EAA1B782899C2B10083F06F /* RockList.xcdatamodeld */,
+				5EA6EF4828AFA02600001DC1 /* Screenshots */,
 			);
 			path = RockList;
 			sourceTree = "<group>";
@@ -190,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EA6EF4728AF9FBF00001DC1 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,8 +218,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EA6EF4C28AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.39.56.png in Resources */,
 				5EAA1B7F2899C2B40083F06F /* LaunchScreen.storyboard in Resources */,
+				5EA6EF4E28AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.40.09.png in Resources */,
 				5EAA1B7C2899C2B40083F06F /* Assets.xcassets in Resources */,
+				5EA6EF4D28AFA03B00001DC1 /* Simulator Screen Shot - iPhone 11 - 2022-08-19 at 11.40.17.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
