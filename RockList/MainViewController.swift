@@ -60,7 +60,7 @@ class MainViewController: UIViewController, RockListView {
     }
     
     NSLayoutConstraint.activate([
-      titleLabel.topAnchor.constraint(equalTo: customNavBar.centerYAnchor, constant: 42),
+      titleLabel.topAnchor.constraint(equalTo: customNavBar.centerYAnchor, constant: 32),
       titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       
       tableView.topAnchor.constraint(equalTo: customNavBar.bottomAnchor, constant: 16),

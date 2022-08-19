@@ -42,7 +42,6 @@ class RockListViewModel {
     }).resume()
   }
   
-  
   func millitoMinutes(data: Int) -> String {
     
     let milliseconds = data

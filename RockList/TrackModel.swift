@@ -18,4 +18,5 @@ struct TrackData: Codable {
   let trackPrice: Double
   let trackTimeMillis: Int?
   let releaseDate: String?
+  let trackViewUrl: String?
 }

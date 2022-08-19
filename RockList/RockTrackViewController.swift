@@ -13,6 +13,7 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
   
   var viewModel: RockListViewModel?
   var selectedIndex: Int = 0
+  var moreDetail: Bool = false
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
@@ -21,7 +22,7 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
     setupViews()
   }
   
-  private lazy var chevronImage: UIButton = {
+  private lazy var chevronButton: UIButton = {
     let button = UIButton()
     button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
     button.contentMode = .scaleAspectFit
@@ -116,9 +117,9 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
   
   private let moreDetailsView: UIView = {
     let view = UIView()
-    view.layer.cornerRadius = 30
-    view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMinYCorner]
-    view.layer.masksToBounds = true
+//    view.layer.cornerRadius = 30
+//    view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMinYCorner]
+//    view.layer.masksToBounds = true
     view.backgroundColor = .white
     return view
   }()
@@ -127,12 +128,14 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
     let webView = WKWebView(frame: self.view.bounds, configuration: WKWebViewConfiguration())
     webView.navigationDelegate = self
     webView.contentMode = .scaleAspectFit
-    webView.layer.cornerRadius = 30
+    webView.layer.cornerRadius = 20
     webView.layer.masksToBounds = true
     return webView
   }()
   
   @objc private func onButtonTap() {
+    moreDetail = true
+    moreDetailSetup()
     print("VIEW DETAILS")
   }
   
@@ -144,16 +147,25 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
     self.dismiss(animated: true, completion: nil)
   }
   
+  private func openUrl() {
+    guard let trackUrl = viewModel?.track?[selectedIndex].trackViewUrl else { return }
+    print("URL", viewModel?.track?[selectedIndex].trackViewUrl)
+    if let url = URL(string: trackUrl), !url.absoluteString.isEmpty {
+      let myRequest = URLRequest(url: url)
+      webKitView.load(myRequest)
+    }
+  }
+  
   private func setupViews() {
-    [trackImage, chevronImage, stackView, trackDurationLabel, releaseDateLabel, button].forEach {
+    [trackImage, chevronButton, stackView, trackDurationLabel, releaseDateLabel, button].forEach {
       view.addSubview($0)
       $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
     NSLayoutConstraint.activate([
-      chevronImage.topAnchor.constraint(equalTo: trackImage.topAnchor, constant: 16),
-      chevronImage.leadingAnchor.constraint(equalTo: trackImage.leadingAnchor, constant: 16),
-      chevronImage.heightAnchor.constraint(equalToConstant: 25),
+      chevronButton.topAnchor.constraint(equalTo: trackImage.topAnchor, constant: 16),
+      chevronButton.leadingAnchor.constraint(equalTo: trackImage.leadingAnchor, constant: 16),
+      chevronButton.heightAnchor.constraint(equalToConstant: 25),
       
       trackImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 8),
       trackImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -191,5 +203,26 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
       trackDurationLabel.text = viewModel?.millitoMinutes(data: vm[selectedIndex].trackTimeMillis ?? 0)
       releaseDateLabel.text = viewModel?.dateFormatter(convertDate: vm[selectedIndex].releaseDate ?? "")
     }
+  }
+  
+  private func moreDetailSetup() {
+    [moreDetailsView, webKitView, chevronButton].forEach {
+      view.addSubview($0)
+      $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    NSLayoutConstraint.activate([
+      moreDetailsView.topAnchor.constraint(equalTo: view.topAnchor),
+      moreDetailsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      moreDetailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      moreDetailsView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      
+      webKitView.topAnchor.constraint(equalTo: moreDetailsView.topAnchor, constant: 8),
+      webKitView.leadingAnchor.constraint(equalTo: moreDetailsView.leadingAnchor, constant: 8),
+      webKitView.trailingAnchor.constraint(equalTo: moreDetailsView.trailingAnchor, constant: -8),
+      webKitView.bottomAnchor.constraint(equalTo: moreDetailsView.bottomAnchor)
+    ])
+    
+    openUrl()
   }
 }
