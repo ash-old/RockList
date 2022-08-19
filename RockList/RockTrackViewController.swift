@@ -13,7 +13,7 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
   
   var viewModel: RockListViewModel?
   var selectedIndex: Int = 0
-  var moreDetail: Bool = false
+  private var moreDetail: Bool = false
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
@@ -31,14 +31,14 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
     return button
   }()
   
-  let trackImage: UIImageView = {
+  private let trackImage: UIImageView = {
     let icon = UIImageView()
     icon.contentMode = .scaleAspectFit
     icon.backgroundColor = .lightGray
     return icon
   }()
   
-  let trackNameLabel: UILabel = {
+  private let trackNameLabel: UILabel = {
     let label = UILabel()
     label.textAlignment = .left
     label.textColor = .black
@@ -49,7 +49,7 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
     return label
   }()
   
-  let artistLabel: UILabel = {
+  private let artistLabel: UILabel = {
     let label = UILabel()
     label.textAlignment = .left
     label.textColor = .black
@@ -59,7 +59,7 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
     return label
   }()
   
-  let priceLabel: UILabel = {
+  private let priceLabel: UILabel = {
     let label = UILabel()
     label.textAlignment = .left
     label.textColor = .black
@@ -76,7 +76,7 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
     return stackView
   }()
   
-  let trackDurationLabel: UILabel = {
+  private let trackDurationLabel: UILabel = {
     let label = UILabel()
     label.textAlignment = .left
     label.textColor = .black
@@ -86,7 +86,7 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
     return label
   }()
   
-  let releaseDateLabel: UILabel = {
+  private let releaseDateLabel: UILabel = {
     let label = UILabel()
     label.textAlignment = .left
     label.textColor = .black
@@ -117,9 +117,6 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
   
   private let moreDetailsView: UIView = {
     let view = UIView()
-//    view.layer.cornerRadius = 30
-//    view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMinYCorner]
-//    view.layer.masksToBounds = true
     view.backgroundColor = .white
     return view
   }()
@@ -136,7 +133,6 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
   @objc private func onButtonTap() {
     moreDetail = true
     moreDetailSetup()
-    print("VIEW DETAILS")
   }
   
   func update() {
@@ -149,7 +145,7 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
   
   private func openUrl() {
     guard let trackUrl = viewModel?.track?[selectedIndex].trackViewUrl else { return }
-    print("URL", viewModel?.track?[selectedIndex].trackViewUrl)
+    
     if let url = URL(string: trackUrl), !url.absoluteString.isEmpty {
       let myRequest = URLRequest(url: url)
       webKitView.load(myRequest)

@@ -15,6 +15,7 @@ class MainViewController: UIViewController, RockListView {
     super.viewDidLoad()
     view.backgroundColor = .lightGray
     viewModel = RockListViewModel(view: self)
+    tableView.reloadData()
     setupViews()
   }
   
