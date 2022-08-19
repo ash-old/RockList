@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5EA6EF4028AF95B000001DC1 /* RockListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA6EF3F28AF95B000001DC1 /* RockListTests.swift */; };
 		5EAA1B702899C2B10083F06F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B6F2899C2B10083F06F /* AppDelegate.swift */; };
 		5EAA1B722899C2B10083F06F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B712899C2B10083F06F /* SceneDelegate.swift */; };
 		5EAA1B742899C2B10083F06F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B732899C2B10083F06F /* MainViewController.swift */; };
@@ -19,7 +20,19 @@
 		5EAA1B8F28A9A8140083F06F /* RockTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA1B8E28A9A8140083F06F /* RockTrackViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5EA6EF4128AF95B000001DC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5EAA1B642899C2B10083F06F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5EAA1B6B2899C2B10083F06F;
+			remoteInfo = RockList;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		5EA6EF3D28AF95AF00001DC1 /* RockListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RockListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EA6EF3F28AF95B000001DC1 /* RockListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockListTests.swift; sourceTree = "<group>"; };
 		5EAA1B6C2899C2B10083F06F /* RockList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EAA1B6F2899C2B10083F06F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EAA1B712899C2B10083F06F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +48,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5EA6EF3A28AF95AF00001DC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5EAA1B692899C2B10083F06F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -45,10 +65,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5EA6EF3E28AF95B000001DC1 /* RockListTests */ = {
+			isa = PBXGroup;
+			children = (
+				5EA6EF3F28AF95B000001DC1 /* RockListTests.swift */,
+			);
+			path = RockListTests;
+			sourceTree = "<group>";
+		};
 		5EAA1B632899C2B10083F06F = {
 			isa = PBXGroup;
 			children = (
 				5EAA1B6E2899C2B10083F06F /* RockList */,
+				5EA6EF3E28AF95B000001DC1 /* RockListTests */,
 				5EAA1B6D2899C2B10083F06F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				5EAA1B6C2899C2B10083F06F /* RockList.app */,
+				5EA6EF3D28AF95AF00001DC1 /* RockListTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,6 +112,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5EA6EF3C28AF95AF00001DC1 /* RockListTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5EA6EF4328AF95B000001DC1 /* Build configuration list for PBXNativeTarget "RockListTests" */;
+			buildPhases = (
+				5EA6EF3928AF95AF00001DC1 /* Sources */,
+				5EA6EF3A28AF95AF00001DC1 /* Frameworks */,
+				5EA6EF3B28AF95AF00001DC1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5EA6EF4228AF95B000001DC1 /* PBXTargetDependency */,
+			);
+			name = RockListTests;
+			productName = RockListTests;
+			productReference = 5EA6EF3D28AF95AF00001DC1 /* RockListTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5EAA1B6B2899C2B10083F06F /* RockList */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EAA1B832899C2B40083F06F /* Build configuration list for PBXNativeTarget "RockList" */;
@@ -109,6 +157,10 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					5EA6EF3C28AF95AF00001DC1 = {
+						CreatedOnToolsVersion = 13.4;
+						TestTargetID = 5EAA1B6B2899C2B10083F06F;
+					};
 					5EAA1B6B2899C2B10083F06F = {
 						CreatedOnToolsVersion = 13.4;
 					};
@@ -128,11 +180,19 @@
 			projectRoot = "";
 			targets = (
 				5EAA1B6B2899C2B10083F06F /* RockList */,
+				5EA6EF3C28AF95AF00001DC1 /* RockListTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5EA6EF3B28AF95AF00001DC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5EAA1B6A2899C2B10083F06F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,6 +205,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5EA6EF3928AF95AF00001DC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5EA6EF4028AF95B000001DC1 /* RockListTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5EAA1B682899C2B10083F06F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -162,6 +230,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5EA6EF4228AF95B000001DC1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5EAA1B6B2899C2B10083F06F /* RockList */;
+			targetProxy = 5EA6EF4128AF95B000001DC1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		5EAA1B7D2899C2B40083F06F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -174,6 +250,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5EA6EF4428AF95B000001DC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T8S86C24A6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashley.RockListTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RockList.app/RockList";
+			};
+			name = Debug;
+		};
+		5EA6EF4528AF95B000001DC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T8S86C24A6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashley.RockListTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RockList.app/RockList";
+			};
+			name = Release;
+		};
 		5EAA1B812899C2B40083F06F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -349,6 +461,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5EA6EF4328AF95B000001DC1 /* Build configuration list for PBXNativeTarget "RockListTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5EA6EF4428AF95B000001DC1 /* Debug */,
+				5EA6EF4528AF95B000001DC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5EAA1B672899C2B10083F06F /* Build configuration list for PBXProject "RockList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

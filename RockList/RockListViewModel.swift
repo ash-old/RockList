@@ -8,14 +8,12 @@
 import Foundation
 import UIKit
 
-protocol RockListView: UIViewController {
-  func update()
-}
+protocol RockListView: UIViewController {}
 
 class RockListViewModel {
   
   let url = "https://itunes.apple.com/search?term=rock"
-  var view: RockListView?
+  weak var view: RockListView?
   var track: [TrackData]?
   
   init(view: RockListView) {

@@ -135,10 +135,6 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
     moreDetailSetup()
   }
   
-  func update() {
-    //
-  }
-  
   @objc private func chevronTapped(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)
   }
