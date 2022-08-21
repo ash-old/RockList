@@ -135,7 +135,14 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
   }
   
   @objc private func chevronTapped(_ sender: Any) {
-    self.dismiss(animated: true, completion: nil)
+    if moreDetail {
+      moreDetail = false
+      moreDetailsView.removeFromSuperview()
+      webKitView.removeFromSuperview()
+    } else {
+      self.dismiss(animated: true, completion: nil)
+    }
+    
   }
   
   private func openUrl() {
