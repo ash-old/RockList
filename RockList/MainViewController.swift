@@ -15,7 +15,6 @@ class MainViewController: UIViewController, RockListView {
     super.viewDidLoad()
     view.backgroundColor = .lightGray
     viewModel = RockListViewModel(view: self)
-    tableView.reloadData()
     setupViews()
   }
   
@@ -121,6 +120,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let rockTrackViewController = RockTrackViewController()
     rockTrackViewController.selectedIndex = indexPath.section
+    rockTrackViewController.viewModel = viewModel
     present(rockTrackViewController, animated: true)
   }
   

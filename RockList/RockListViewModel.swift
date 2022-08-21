@@ -16,12 +16,6 @@ class RockListViewModel {
   weak var view: RockListView?
   var track: [TrackData]?
   
-  var trackName: String?
-  var trackArtist: String?
-  var trackPrice: String?
-  var trackDuration: String?
-  var trackReleaseDate: String?
-  
   init(view: RockListView) {
     self.view = view
     

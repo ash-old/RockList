@@ -18,7 +18,6 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     view.backgroundColor = .lightGray
-    viewModel = RockListViewModel(view: self)
     setupViews()
   }
   
@@ -191,10 +190,13 @@ class RockTrackViewController: UIViewController, RockListView, WKNavigationDeleg
       }
       trackNameLabel.text = vm[selectedIndex].trackName
       artistLabel.text = vm[selectedIndex].artistName
-      priceLabel.text = String(describing: "£ \(vm[selectedIndex].trackPrice)")     
+      priceLabel.text = String(describing: "£ \(vm[selectedIndex].trackPrice)")
       trackDurationLabel.text = viewModel?.millitoMinutes(data: vm[selectedIndex].trackTimeMillis ?? 0)
       releaseDateLabel.text = viewModel?.dateFormatter(convertDate: vm[selectedIndex].releaseDate ?? "")
+    } else {
+      print("No data")
     }
+    
   }
   
   private func moreDetailSetup() {
