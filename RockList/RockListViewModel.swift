@@ -16,6 +16,12 @@ class RockListViewModel {
   weak var view: RockListView?
   var track: [TrackData]?
   
+  var trackName: String?
+  var trackArtist: String?
+  var trackPrice: String?
+  var trackDuration: String?
+  var trackReleaseDate: String?
+  
   init(view: RockListView) {
     self.view = view
     
@@ -27,6 +33,9 @@ class RockListViewModel {
     request.httpMethod = "GET"
 
     URLSession.shared.dataTask(with: request, completionHandler: { data, response, error -> Void in
+      if let error = error {
+        print("ERROR", error)
+      }
       if let safeData = data {
         do {
             let jsonDecoder = JSONDecoder()
